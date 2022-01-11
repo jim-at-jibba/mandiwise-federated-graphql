@@ -15,6 +15,11 @@ import typeDefs from "./typeDefs"
         resolvers,
       },
     ]),
+    context: ({req}) => {
+      //@ts-ignore
+      const user = req.headers.user ? JSON.parse(req.headers.user) : null
+      return {user}
+    },
   })
 
   const {url} = await server.listen({port})
