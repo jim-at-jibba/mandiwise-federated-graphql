@@ -1,5 +1,7 @@
 import server from "./config/apollo"
 import app from "./config/app"
+
+// What
 ;(async () => {
   const port = process.env.PORT
 
