@@ -12,7 +12,9 @@ const resolvers = {
   },
 
   Query: {
-    viewer() {
+    //@ts-ignore
+    viewer(parent, args, {user}, info) {
+      console.log(user)
       return accounts[0]
     },
   },
