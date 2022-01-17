@@ -1,3 +1,4 @@
+import auth0 from "../../config/auth0"
 const accounts = [{id: "1", email: "devchirps@mandiwise.com"}]
 
 // `__resolveReference` allows individual types to be resolved by reference from another service
@@ -13,8 +14,9 @@ const resolvers = {
 
   Query: {
     //@ts-ignore
-    viewer(parent, args, {user}, info) {
-      console.log(user)
+    async viewer(parent, args, {user}, info) {
+      const viewer = await auth0.getUser({id: user.sub})
+      console.log({user, viewer})
       return accounts[0]
     },
   },
